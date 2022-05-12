@@ -137,14 +137,22 @@ const handleFormSubmit = (event) => {
   console.log(pies);
 };
 
-const deletePie = (event) => {
+const modifyPie = (event) => {
   const targetId = event.target.id;
   const targetType = event.target.type;
 
   if (targetType === "button") {
-    pies.splice(targetId, 1);
+    const [method,id] = targetId.split("--");
+
+  if (method === "delete") {
+    pies.splice(id, 1);
     pieBuilder(pies);
+  } else {
+    const pieObj = pies[id];
+
+    pieForm(pieObj);
   }
+}
 };
 
 const pieFormEvents = () => {
@@ -183,7 +191,8 @@ const pieBuilder = (piesArray) => {
       <div class="card-body">
         <h5 class="card-title">${pie.name}</h5>
         <p class="card-text">${pie.ingredients}</p>
-        <button type="button" id=${i} class="btn btn-primary">Delete</button>
+        <button type="button" id="delete--${i}" class="btn btn-delete">Delete</button>
+        <button type="button" id="edit--${i}" class="btn btn-edit">Edit</button>
       </div>
     </div>
     `;
