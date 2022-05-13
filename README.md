@@ -1,3 +1,3 @@
-# pies
-
-here is ths link to my website dario-pies.netlify.app
+# Pies
+Check out my app dario-pies.netlify.app
+# HTML, CSS , Javascript
