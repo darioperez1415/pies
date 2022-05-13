@@ -186,13 +186,14 @@ const pieBuilder = (piesArray) => {
   let domString = "";
   piesArray.forEach((pie, i) => {
     domString += `
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 18rem; margin: 3px">
       <img src="${pie.imageUrl}" class="card-img-top" alt="${pie.name}">
       <div class="card-body">
-        <h5 class="card-title">${pie.name}</h5>
-        <p class="card-text">${pie.ingredients}</p>
-        <button type="button" id="delete--${i}" class="btn btn-delete">Delete</button>
-        <button type="button" id="edit--${i}" class="btn btn-edit">Edit</button>
+        <h2 class="card-title">Name: ${pie.name}</h2>
+        <H6 class="card-title">Ingredients:
+        ${pie.ingredients}</h6>
+        <button type="button" id="delete--${i}" class="btn btn-danger">Delete</button>
+        <button type="button" id="edit--${i}" class="btn btn-info">Edit</button>
       </div>
     </div>
     `;
@@ -206,8 +207,7 @@ const buttonEvents = () => {
   document
     .querySelector("#buttonContainer")
     .addEventListener("click", handleButtonClick);
-
-  document.querySelector("#piesContainer").addEventListener("click", deletePie);
+  document.querySelector("#piesContainer").addEventListener("click", modifyPie);
 };
 
 const init = () => {
